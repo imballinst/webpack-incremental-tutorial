@@ -2,9 +2,15 @@
   "name": "webpack-incremental-tutorial",
   "version": "1.0.0",
   "description": "Basic and advanced guide for Webpack in an incremental way",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:1": "NODE_ENV=production webpack --config ./01-basic/webpack.config.js",
+    "build:2": "NODE_ENV=production webpack --config ./02-minify/webpack.config.js",
+    "build:3": "NODE_ENV=production webpack --config ./03-hash/webpack.config.js",
+    "build:4": "NODE_ENV=production webpack --config ./04-split-chunk/webpack.config.js",
+    "build:5": "NODE_ENV=production webpack --config ./05-build-cache/webpack.config.js",
+    "build:6": "NODE_ENV=production webpack --config ./06-filter/webpack.config.js",
+    "build:clear": "rimraf ./01-basic/build ./02-minify/build ./03-hash/build ./04-split/build ./05-build/build ./06-filter/build",
+    "cache:clear": "rimraf ./node_modules/.cache"
   },
   "repository": {
     "type": "git",
@@ -19,7 +25,6 @@
   "bugs": {
     "url": "https://github.com/Imballinst/webpack-incremental-tutorial/issues"
   },
-  "homepage": "https://github.com/Imballinst/webpack-incremental-tutorial#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -32,9 +37,11 @@
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "hard-source-webpack-plugin": "^0.4.9",
+    "html-webpack-plugin": "^2.30.1",
     "image-webpack-loader": "^3.4.2",
     "json-loader": "^0.5.7",
     "node-sass": "^4.5.3",
+    "rimraf": "^2.6.2",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.9",
@@ -45,7 +52,10 @@
     "webpack-md5-hash": "0.0.5"
   },
   "dependencies": {
+    "joi": "^11.1.0",
+    "joi-browser": "^10.6.1",
     "jquery": "^3.2.1",
+    "jsonwebtoken": "^8.0.1",
     "moment": "^2.18.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
