@@ -10,7 +10,8 @@
     "build:5": "NODE_ENV=production webpack --config ./05-build-cache/webpack.config.js",
     "build:6": "NODE_ENV=production webpack --config ./06-filter/webpack.config.js",
     "build:clear": "rimraf ./01-basic/build ./02-minify/build ./03-hash/build ./04-split/build ./05-build/build ./06-filter/build",
-    "cache:clear": "rimraf ./node_modules/.cache"
+    "cache:clear": "rimraf ./node_modules/.cache",
+    "eslint": "./node_modules/.bin/eslint --fix */webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,9 @@
     "babel-preset-stage-2": "^6.24.1",
     "chunk-manifest-webpack-plugin": "^1.1.2",
     "css-loader": "^0.28.7",
+    "eslint": "^4.7.2",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-plugin-import": "^2.7.0",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "hard-source-webpack-plugin": "^0.4.9",
