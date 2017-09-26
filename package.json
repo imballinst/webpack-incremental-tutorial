@@ -11,9 +11,9 @@
     "build:6": "NODE_ENV=production webpack --config ./06-filter/webpack.config.js",
     "build:clear": "rimraf ./01-basic/build ./02-minify/build ./03-hash/build ./04-split-chunk/build ./05-build-cache/build ./06-filter/build",
     "cache:clear": "rimraf ./node_modules/.cache",
-    "eslint": "./node_modules/.bin/eslint --fix */webpack.config.js"
+    "test": "./node_modules/.bin/eslint --fix */webpack.config.js"
   },
-  "precommit": "eslint",
+  "precommit": "test",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Imballinst/webpack-incremental-tutorial.git"
