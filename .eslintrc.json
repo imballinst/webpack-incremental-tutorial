@@ -16,6 +16,7 @@
     "no-param-reassign": [2, {
       "props": false
     }],
+    "jsx-a11y/href-no-hash": "off",
     "operator-linebreak": [
       2,
       "after"

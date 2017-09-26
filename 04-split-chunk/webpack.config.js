@@ -20,17 +20,17 @@ const buildPath = path.join(__dirname, './build');
 const plugins = [
   // Make sure Webpack is given current environment with quotes ("")
   new webpack.DefinePlugin({
-    'process.env': { NODE_ENV: JSON.stringify(nodeEnv) }
+    'process.env': { NODE_ENV: JSON.stringify(nodeEnv) },
   }),
 
   // Provide plugin to prevent "moment is not defined" or "$ is not defined"
   new webpack.ProvidePlugin({
-    moment: "moment",
-    $: "jquery",
-    jQuery: "jquery",
-    "window.$": "jquery",
-    "window.jQuery": "jquery"
-  })
+    moment: 'moment',
+    $: 'jquery',
+    jQuery: 'jquery',
+    'window.$': 'jquery',
+    'window.jQuery': 'jquery',
+  }),
 ];
 
 // Common loaders
@@ -44,25 +44,25 @@ const loaders = [
     options: {
       babelrc: false,
       presets: [
-        [ 'es2015', { modules: false } ],
-        "react",
-        "stage-2"
-      ]
-    }
+        ['es2015', { modules: false }],
+        'react',
+        'stage-2',
+      ],
+    },
   },
 
   // Use file-loader to load fonts
   {
     test: /\.(woff2?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
     use: isProd ? 'file-loader?publicPath=../&name=fonts/[name].[hash].[ext]' :
-                  'file-loader?name=fonts/[name].[ext]'
+      'file-loader?name=fonts/[name].[ext]',
   },
 
   // Use imageLoader to load images
   {
     test: /.*\.(gif|png|jpe?g)$/i,
-    loaders: imageLoader
-  }
+    loaders: imageLoader,
+  },
 ];
 
 // Configure plugins and loaders depending on environment settings
@@ -71,7 +71,7 @@ if (isProd) {
     // Add global options for all loaders
     new webpack.LoaderOptionsPlugin({
       minimize: true,
-      debug: false
+      debug: false,
     }),
 
     // Uglify Javascript files
@@ -86,7 +86,7 @@ if (isProd) {
     // [NEW]: enable hash on chunk bundles
     new ChunkManifestPlugin({
       filename: 'chunk-manifest.json',
-      manifestVariable: 'webpackManifest'
+      manifestVariable: 'webpackManifest',
     }),
 
     // Separate CSS files from the Javascript files
@@ -107,22 +107,22 @@ if (isProd) {
           quality: '65-90',
           speed: 4,
           optimizationLevel: 7,
-          interlaced: false
+          interlaced: false,
         },
         gifsicle: {
           quality: '65-90',
           speed: 4,
           optimizationLevel: 7,
-          interlaced: false
+          interlaced: false,
         },
         mozjpeg: {
           quality: '65-90',
           speed: 4,
           optimizationLevel: 7,
           interlaced: false,
-          progressive: true
-        }
-      }
+          progressive: true,
+        },
+      },
     }
   );
 
@@ -147,7 +147,7 @@ if (isProd) {
   // Use style-loader, css-loader, and sass-loader on development
   loaders.push({
     test: /\.(css|sass|scss)$/,
-    use: ['style-loader', 'css-loader', 'sass-loader',]
+    use: ['style-loader', 'css-loader', 'sass-loader'],
   });
 }
 
@@ -193,34 +193,34 @@ module.exports = {
 
   // Source files; relative to context
   entry: {
-    'app1': './js/app1.js',
-    'app2': './js/app2.js',
-    'app3': './js/app3.js',
+    app1: './js/app1.js',
+    app2: './js/app2.js',
+    app3: './js/app3.js',
   },
 
   // Output directory
   // [NEW]: change [hash] to [chunkhash], add output.chunkFilename
   output: {
-    path: buildPath + '/assets/',
+    path: `${buildPath}/assets/`,
     filename: isProd ? 'js/[name].[chunkhash].js' : 'js/[name].js',
     chunkFilename: isProd ? 'js/[name].[chunkhash].js' : 'js/[name].js',
-    publicPath: '/assets/'
+    publicPath: '/assets/',
   },
 
   // Loaders used to load modules
   module: {
-    loaders: loaders
+    loaders,
   },
 
   // Resolve a module name as another module and
   // directories to lookup when searching for modules
   resolve: {
     alias: {
-      joi: 'joi-browser'
+      joi: 'joi-browser',
     },
     modules: [
       resourcePath,
-      nodeModulesPath
+      nodeModulesPath,
     ],
   },
 
@@ -238,7 +238,7 @@ module.exports = {
 
     // Proxy to a running server
     proxy: {
-      '**': `http://localhost:3000/`,
+      '**': 'http://localhost:3000/',
     },
 
     // Enable hot-reload
@@ -253,7 +253,7 @@ module.exports = {
 
     // Enable "waiting" for file changes
     watchOptions: {
-      poll: true
+      poll: true,
     },
 
     // Show stats after in-memory bundle has been built
@@ -269,7 +269,7 @@ module.exports = {
       warnings: true,
       colors: {
         green: '\u001b[32m',
-      }
+      },
     },
-  }
+  },
 };
