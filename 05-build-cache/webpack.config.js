@@ -85,22 +85,35 @@ if (isProd) {
     }),
 
     // Uglify Javascript files
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        screw_ie8: true,
-        conditionals: true,
-        unused: true,
-        comparisons: true,
-        sequences: true,
-        dead_code: true,
-        evaluate: true,
-        if_return: true,
-        join_vars: true,
-      },
-      output: {
-        comments: false,
-      },
+    new webpack.optimize.UglifyJsPlugin(),
+
+    // Split each entry to app and vendor bundle
+    // Common vendor
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor-common',
+      chunks: [
+        'app1',
+        'app2',
+        'app3',
+      ],
+    }),
+    // Split app and vendor code of app1
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor-app1',
+      chunks: ['app1'],
+      minChunks: ({ resource }) => /node_modules/.test(resource),
+    }),
+    // Split app and vendor code of app2
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor-app2',
+      chunks: ['app2'],
+      minChunks: ({ resource }) => /node_modules/.test(resource),
+    }),
+    // Split app and vendor code of app3
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor-app3',
+      chunks: ['app3'],
+      minChunks: ({ resource }) => /node_modules/.test(resource),
     }),
 
     // Hash assets
@@ -175,37 +188,6 @@ if (isProd) {
     use: ['style-loader', 'css-loader', 'sass-loader'],
   });
 }
-
-// Split each entry to app and vendor bundle
-plugins.push(
-  // Common vendor
-  new webpack.optimize.CommonsChunkPlugin({
-    name: 'vendor-common',
-    chunks: [
-      'app1',
-      'app2',
-      'app3',
-    ],
-  }),
-  // Split app and vendor code of app1
-  new webpack.optimize.CommonsChunkPlugin({
-    name: 'vendor-app1',
-    chunks: ['app1'],
-    minChunks: ({ resource }) => /node_modules/.test(resource),
-  }),
-  // Split app and vendor code of app2
-  new webpack.optimize.CommonsChunkPlugin({
-    name: 'vendor-app2',
-    chunks: ['app2'],
-    minChunks: ({ resource }) => /node_modules/.test(resource),
-  }),
-  // Split app and vendor code of app3
-  new webpack.optimize.CommonsChunkPlugin({
-    name: 'vendor-app3',
-    chunks: ['app3'],
-    minChunks: ({ resource }) => /node_modules/.test(resource),
-  })
-);
 
 // Configuration
 module.exports = {

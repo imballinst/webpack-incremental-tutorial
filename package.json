@@ -9,7 +9,7 @@
     "build:4": "NODE_ENV=production webpack --config ./04-split-chunk/webpack.config.js",
     "build:5": "NODE_ENV=production webpack --config ./05-build-cache/webpack.config.js",
     "build:6": "NODE_ENV=production webpack --config ./06-filter/webpack.config.js",
-    "build:7": "NODE_ENV=production webpack --config ./07-tree-shaking/webpack.config.js",
+    "build:7": "set NODE_ENV=production&&webpack --config ./07-tree-shaking/webpack.config.js",
     "build:clear": "rimraf ./01-basic/build ./02-minify/build ./03-hash/build ./04-split-chunk/build ./05-build-cache/build ./06-filter/build ./07-tree-shaking/build",
     "cache:clear": "rimraf ./node_modules/.cache",
     "test": "./node_modules/.bin/eslint --fix */webpack.config.js"

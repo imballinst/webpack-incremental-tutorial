@@ -32,6 +32,7 @@ const plugins = [
 ];
 
 // Common loaders
+// [NEW]: make this empty
 const imageLoader = [];
 const loaders = [
   // Use babel-loader to transpile file with JS/JSX extension
