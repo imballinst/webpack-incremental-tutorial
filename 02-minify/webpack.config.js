@@ -32,8 +32,7 @@ const plugins = [
 ];
 
 // Common loaders
-// [NEW]: make this empty
-const imageLoader = [];
+const imageLoader = ['file-loader?name=img/[name].[ext]'];
 const loaders = [
   // Use babel-loader to transpile file with JS/JSX extension
   {
@@ -87,7 +86,6 @@ if (isProd) {
 
   // [NEW]: Apply optimizing for images on production
   imageLoader.push(
-    'file-loader?name=img/[name].[ext]',
     {
       loader: 'image-webpack-loader',
       query: {
@@ -128,9 +126,6 @@ if (isProd) {
 } else {
   // Enable hot reload on development
   plugins.push(new webpack.HotModuleReplacementPlugin());
-
-  // Standard loading on development
-  imageLoader.push('file-loader?name=img/[name].[ext]');
 
   // Use style-loader, css-loader, and sass-loader on development
   loaders.push({

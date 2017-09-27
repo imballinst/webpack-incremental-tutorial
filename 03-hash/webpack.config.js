@@ -33,6 +33,7 @@ const plugins = [
 ];
 
 // Common loaders
+// [NEW]: make this empty for production/development name difference
 const imageLoader = [];
 const loaders = [
   // Use babel-loader to transpile file with JS/JSX extension
