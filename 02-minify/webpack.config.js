@@ -81,7 +81,6 @@ if (isProd) {
     // Separate CSS files from the Javascript files
     new ExtractTextPlugin({
       filename: 'css/[name].css',
-      allChunks: true,
     })
   );
 
@@ -158,7 +157,7 @@ module.exports = {
   // Output directory
   output: {
     path: `${buildPath}/assets/`,
-    filename: isProd ? 'js/[name].js' : 'js/[name].js',
+    filename: 'js/[name].js',
     publicPath: '/assets/',
   },
 

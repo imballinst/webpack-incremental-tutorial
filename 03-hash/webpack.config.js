@@ -87,7 +87,6 @@ if (isProd) {
     // [NEW]: add [hash]
     new ExtractTextPlugin({
       filename: 'css/[name].[hash].css',
-      allChunks: true,
     })
   );
 

@@ -90,7 +90,7 @@ if (isProd) {
     }),
 
     // Separate CSS files from the Javascript files
-    // [NEW]: change [hash] to [chunkhash]
+    // [NEW]: change [hash] to [chunkhash] and add property allChunks: true
     new ExtractTextPlugin({
       filename: 'css/[name].[chunkhash].css',
       allChunks: true,
