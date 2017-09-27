@@ -47,7 +47,7 @@ const loaders = [
     options: {
       babelrc: false,
       presets: [
-        ['es2015', { modules: false }],
+        ['es2015'],
         'react',
         'stage-2',
       ],

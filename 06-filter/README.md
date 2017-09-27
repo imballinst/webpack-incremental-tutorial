@@ -13,3 +13,6 @@ It is recommended to check the [previous example](https://github.com/Imballinst/
 6. Spltting assets
 7. Improving consecutive build performance
 8. Filtering vendor assets
+
+### Next Example
+Check out the [next example](https://github.com/Imballinst/webpack-incremental-tutorial/tree/master/07-tree-shaking) on enabling tree shaking.

@@ -1,16 +1,20 @@
 // Import dependencies
 const webpack = require('webpack');
 const path = require('path');
+const NodeObjectHash = require('node-object-hash');
 
 const ManifestPlugin = require('webpack-manifest-plugin');
+const ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 
 // Config variables
 const nodeEnv = process.env.NODE_ENV;
 const isProd = nodeEnv === 'production';
 
 const nodeModulesPath = path.join(__dirname, '../node_modules');
+const cachePath = path.join(nodeModulesPath, './.cache');
 
 const resourcePath = path.join(__dirname, './resources/assets');
 const buildPath = path.join(__dirname, './build');
@@ -30,6 +34,9 @@ const plugins = [
     'window.$': 'jquery',
     'window.jQuery': 'jquery',
   }),
+
+  // exclude moment locale except EN an ID
+  new webpack.ContextReplacementPlugin(/moment[\\/]locale$/, /^\.\/(en|id)$/),
 ];
 
 // Common loaders
@@ -43,7 +50,8 @@ const loaders = [
     options: {
       babelrc: false,
       presets: [
-        ['es2015'],
+        // [NEW]: enable tree shaking
+        ['es2015', { modules: false }],
         'react',
         'stage-2',
       ],
@@ -51,7 +59,6 @@ const loaders = [
   },
 
   // Use file-loader to load fonts
-  // [NEW]: add [hash]
   {
     test: /\.(woff2?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
     use: isProd ? 'file-loader?publicPath=../&name=fonts/[name].[hash].[ext]' :
@@ -67,7 +74,14 @@ const loaders = [
 
 // Configure plugins and loaders depending on environment settings
 if (isProd) {
+  // Enable caching to improve build performance
   plugins.push(
+    new HardSourceWebpackPlugin({
+      cacheDirectory: `${cachePath}/hard-source/[confighash]`,
+      recordsPath: `${cachePath}/hard-source/[confighash]/records.json`,
+      configHash: NodeObjectHash({ sort: false }).hash,
+    }),
+
     // Add global options for all loaders
     new webpack.LoaderOptionsPlugin({
       minimize: true,
@@ -75,24 +89,44 @@ if (isProd) {
     }),
 
     // Uglify Javascript files
-    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+        screw_ie8: true,
+        conditionals: true,
+        unused: true,
+        comparisons: true,
+        sequences: true,
+        dead_code: true,
+        evaluate: true,
+        if_return: true,
+        join_vars: true,
+      },
+      output: {
+        comments: false,
+      },
+    }),
 
-    // [NEW]: Hash assets
+    // Hash assets
     new WebpackMd5Hash(),
 
     // Add manifest to assets after build
     new ManifestPlugin(),
 
+    // Enable hash on chunk bundles
+    new ChunkManifestPlugin({
+      filename: 'chunk-manifest.json',
+      manifestVariable: 'webpackManifest',
+    }),
+
     // Separate CSS files from the Javascript files
-    // [NEW]: add [hash]
     new ExtractTextPlugin({
-      filename: 'css/[name].[hash].css',
+      filename: 'css/[name].[chunkhash].css',
       allChunks: true,
     })
   );
 
   // Apply optimizing for images on production
-  // [NEW]: add [hash]
   imageLoader.push(
     'file-loader?name=img/[name].[hash].[ext]',
     {
@@ -146,6 +180,37 @@ if (isProd) {
   });
 }
 
+// Split each entry to app and vendor bundle
+plugins.push(
+  // Common vendor
+  new webpack.optimize.CommonsChunkPlugin({
+    name: 'vendor-common',
+    chunks: [
+      'app1',
+      'app2',
+      'app3',
+    ],
+  }),
+  // Split app and vendor code of app1
+  new webpack.optimize.CommonsChunkPlugin({
+    name: 'vendor-app1',
+    chunks: ['app1'],
+    minChunks: ({ resource }) => /node_modules/.test(resource),
+  }),
+  // Split app and vendor code of app2
+  new webpack.optimize.CommonsChunkPlugin({
+    name: 'vendor-app2',
+    chunks: ['app2'],
+    minChunks: ({ resource }) => /node_modules/.test(resource),
+  }),
+  // Split app and vendor code of app3
+  new webpack.optimize.CommonsChunkPlugin({
+    name: 'vendor-app3',
+    chunks: ['app3'],
+    minChunks: ({ resource }) => /node_modules/.test(resource),
+  })
+);
+
 // Configuration
 module.exports = {
   // source-map: long build, smaller size, production
@@ -163,10 +228,10 @@ module.exports = {
   },
 
   // Output directory
-  // [NEW]: add [hash]
   output: {
     path: `${buildPath}/assets/`,
-    filename: isProd ? 'js/[name].[hash].js' : 'js/[name].js',
+    filename: isProd ? 'js/[name].[chunkhash].js' : 'js/[name].js',
+    chunkFilename: isProd ? 'js/[name].[chunkhash].js' : 'js/[name].js',
     publicPath: '/assets/',
   },
 

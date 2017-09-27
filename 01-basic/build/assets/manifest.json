@@ -1,0 +1,11 @@
+{
+  "app1.js": "js/app1.js",
+  "app1.js.map": "js/app1.js.map",
+  "app2.js": "js/app2.js",
+  "app2.js.map": "js/app2.js.map",
+  "app3.js": "js/app3.js",
+  "app3.js.map": "js/app3.js.map",
+  "img/feelsbadman.png": "img/feelsbadman.png",
+  "img/feelsgoodman.png": "img/feelsgoodman.png",
+  "img/monkaS.png": "img/monkaS.png"
+}

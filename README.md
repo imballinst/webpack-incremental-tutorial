@@ -9,7 +9,7 @@ npm install
 ```
 
 ## List of examples and How to Run Them
-There are 6 examples (as stated above) in this repository. Run these commands on your **root directory**.
+There are 7 examples (as stated above) in this repository. Run these commands on your **root directory**.
 
 1. [Basic - Complete Asset Loaders](https://github.com/Imballinst/webpack-incremental-tutorial/tree/master/01-basic): `npm run build:1`
 2. [Advanced - Minify Assets](https://github.com/Imballinst/webpack-incremental-tutorial/tree/master/02-minify): `npm run build:2`
@@ -17,6 +17,7 @@ There are 6 examples (as stated above) in this repository. Run these commands on
 4. [Advanced - Code Splitting](https://github.com/Imballinst/webpack-incremental-tutorial/tree/master/04-split-chunk): `npm run build:4`
 5. [Advanced - Build Performance](https://github.com/Imballinst/webpack-incremental-tutorial/tree/master/05-build-cache): `npm run build:5`
 6. [Advanced - Vendor Assets Filtering](https://github.com/Imballinst/webpack-incremental-tutorial/tree/master/06-filter): `npm run build:6`
+7. [Advanced - Tree Shaking](https://github.com/Imballinst/webpack-incremental-tutorial/tree/master/07-tree-shaking): `npm run build:7`
 
 ## Additional Scripts
 1. **Clear cache folder (for #5 and #6)**: `npm run cache:clear`

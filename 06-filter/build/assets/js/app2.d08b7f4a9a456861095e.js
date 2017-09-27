@@ -1,0 +1,1 @@
+webpackJsonp([4],{34:function(n,e,o){"use strict";function c(n){return n&&n.__esModule?n:{default:n}}var f=o(5),t=(c(f),o(35));c(t);console.log("xp")},35:function(n,e,o){n.exports=o.p+"img/monkaS.faa624e2f2b1b2d4ebcfcb095b90fcda.png"}},[34]);
