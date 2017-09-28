@@ -24,7 +24,7 @@ There are 7 examples (as stated above) in this repository. Run these commands on
 2. **Delete build folder**: `npm run build:clear`
 
 ## Testing
-The test contained in this repository has only one purpose: to make sure that no code is unused or out of context. To run the test: `npm run eslint`.
+The test contained in this repository has only one purpose: to make sure that no code is unused or out of context with [eslint](https://eslint.org/). To run the test: `npm test`.
 
 ## Complete guide
 For complete guide, please check [Webpack's guides section](https://webpack.js.org/guides).
