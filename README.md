@@ -1,5 +1,5 @@
 # Webpack Incremental Tutorial
-Basic and advanced guide for [Webpack](http://webpack.js.org/) in an incremental way. It is incremental because there are 6 examples (6 folders). Each has a `webpack.config.js` and complements the previous tutorial. For example, [Example 2 (Minify)](https://github.com/Imballinst/webpack-incremental-tutorial/tree/master/02-minify) complements [Example 1 (Basic)](https://github.com/Imballinst/webpack-incremental-tutorial/tree/master/01-basic), and so on.
+Basic and advanced guide for [Webpack](http://webpack.js.org/) in an incremental way. It is incremental because there are 7 examples (7 folders). Each has a `webpack.config.js` and complements the previous tutorial. For example, [Example 2 (Minify)](https://github.com/Imballinst/webpack-incremental-tutorial/tree/master/02-minify) complements [Example 1 (Basic)](https://github.com/Imballinst/webpack-incremental-tutorial/tree/master/01-basic), and so on.
 
 ## Installation
 ```
@@ -20,7 +20,7 @@ There are 7 examples (as stated above) in this repository. Run these commands on
 7. [Advanced - Tree Shaking](https://github.com/Imballinst/webpack-incremental-tutorial/tree/master/07-tree-shaking): `npm run build:7`
 
 ## Additional Scripts
-1. **Clear cache folder (for #5 and #6)**: `npm run cache:clear`
+1. **Clear cache folder (for #5, #6, and #7)**: `npm run cache:clear`
 2. **Delete build folder**: `npm run build:clear`
 
 ## Testing
