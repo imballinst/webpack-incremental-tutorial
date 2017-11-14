@@ -4,6 +4,9 @@ Advanced Webpack config with assets hasher.
 ## Prerequisites
 It is recommended to check the [previous example](https://github.com/Imballinst/webpack-incremental-tutorial/tree/master/02-minify) first about minifying assets.
 
+### What's Special About This Part?
+Browser has caching technology. If they have downloaded an asset, that asset will remain inside the browser's cache until it expires. Assets hashing is important so we make sure that the browser always has the newest assets (not the outdated ones).
+
 ### Features
 1. Loading assets
 2. Outputting assets

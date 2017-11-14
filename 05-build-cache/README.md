@@ -4,6 +4,9 @@ Advanced Webpack config with build caching to make consecutive builds faster.
 ## Prerequisites
 It is recommended to check the [previous example](https://github.com/Imballinst/webpack-incremental-tutorial/tree/master/04-split-chunk) first about splitting codes.
 
+### What's Special About This Part?
+Time will always be not enough. If we could reduce time spent on doing something, then we should do it. This part contains how repetititive/consecutive build's time can be reduced-- again, with caching.
+
 ### Features
 1. Loading assets
 2. Outputting assets

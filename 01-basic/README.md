@@ -1,6 +1,9 @@
 ## Basic Webpack Config
 The basic Webpack config to load things.
 
+### What's Special About This Part?
+Nothing. This is just the basic config and should not be used for production.
+
 ### Features
 1. Loading assets
 2. Outputting assets

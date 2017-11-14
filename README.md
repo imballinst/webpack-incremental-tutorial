@@ -18,6 +18,7 @@ There are 7 examples (as stated above) in this repository. Run these commands on
 5. [Advanced - Build Performance](https://github.com/Imballinst/webpack-incremental-tutorial/tree/master/05-build-cache): `npm run build:5`
 6. [Advanced - Vendor Assets Filtering](https://github.com/Imballinst/webpack-incremental-tutorial/tree/master/06-filter): `npm run build:6`
 7. [Advanced - Tree Shaking](https://github.com/Imballinst/webpack-incremental-tutorial/tree/master/07-tree-shaking): `npm run build:7`
+8. [Advanced - Conditional Build](https://github.com/Imballinst/webpack-incremental-tutorial/tree/master/08-conditional-build): `npm run build:8`
 
 ## Additional Scripts
 1. **Clear cache folder (for #5, #6, and #7)**: `npm run cache:clear`
