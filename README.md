@@ -9,7 +9,7 @@ npm install
 ```
 
 ## List of examples and How to Run Them
-There are 7 examples (as stated above) in this repository. Run these commands on your **root directory**.
+There are 8 examples (as stated above) in this repository. Run these commands on your **root directory**.
 
 1. [Basic - Complete Asset Loaders](https://github.com/Imballinst/webpack-incremental-tutorial/tree/master/01-basic): `npm run build:1`
 2. [Advanced - Minify Assets](https://github.com/Imballinst/webpack-incremental-tutorial/tree/master/02-minify): `npm run build:2`
