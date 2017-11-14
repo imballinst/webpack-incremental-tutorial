@@ -22,7 +22,6 @@ There are 8 examples (as stated above) in this repository. Run these commands on
 
 ## Additional Scripts
 1. **Clear cache folder (for example #5 and above)**: `npm run cache:clear`
-2. **Delete build folder**: `npm run build:clear`
 
 ## Testing
 The test contained in this repository has only one purpose: to make sure that no code is unused or out of context with [eslint](https://eslint.org/). To run the test: `npm test`.
